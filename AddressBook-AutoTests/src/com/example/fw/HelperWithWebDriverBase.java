@@ -74,10 +74,6 @@ public class HelperWithWebDriverBase {
 	protected void selectGroup(SelectGroupObject selectGroupObject) {
 		new Select(findElement(By.name("new_group"))).selectByVisibleText(selectGroupObject.groupname); 
 	}
-//	protected void click(By linkText) {
-//		findElement(linkText).click();
-//	}
-
 
 	
 }

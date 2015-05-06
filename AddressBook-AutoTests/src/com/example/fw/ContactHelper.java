@@ -46,12 +46,7 @@ private void fillContactInformation(ContactInformationObject contactInformationO
     type("address2", contactInformationObject.address2);
     type("phone2", contactInformationObject.phone);
     
-}
-
-//protected void type(String locator, String name) {
-//	click(By.name(locator));
-//    click(By.name(locator));
-//} была ошибка: контакты создавались пустыми оба, если type был описан так <-
+	}
 
 protected void type(String locator, String name) {
 	findElement(By.name(locator)).clear();
@@ -79,31 +74,8 @@ public void modifyContact(int i, ContactInformationObject contactInformationObje
 	fillContactInformation(contactInformationObject);
 	click(By.xpath("(//input[@name='update'])[1]"));
 	goBackToContactsPage();
-}
-
-
-
-////checkGroup(i);
-//private void checkGroup(int i) {
-//	click(By.name("selected[]"));
-//}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+	
+	}
 
 }
 

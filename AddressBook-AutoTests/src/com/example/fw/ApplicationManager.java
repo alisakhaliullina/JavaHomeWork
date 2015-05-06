@@ -10,7 +10,7 @@ public class ApplicationManager {
 	private GroupHelper groupHelper;
 	private ContactHelper contactHelper;
 	private NavigationHelper navigationHelper;
-	private SelectHelper selectHelper;
+	private HelperWithWebDriverBase selectHelper;
 		
 	public static ApplicationManager getInstance() {
 		if (singletone == null) {
@@ -53,7 +53,7 @@ public class ApplicationManager {
 			}
 				
 
-		public SelectHelper getSelectHelper() {
+		public HelperWithWebDriverBase getSelectHelper() {
 			if (selectHelper == null) {
 				selectHelper = new SelectHelper(this);
 			}		

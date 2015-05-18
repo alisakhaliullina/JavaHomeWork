@@ -16,50 +16,52 @@ public class ApplicationManager {
 		if (singletone == null) {
 			singletone = new ApplicationManager();
 		}
-		return singletone;
+			return singletone;
 	}
 	
 	public void stop() {
 		if (webDriverHelper != null) {
-		webDriverHelper.stop();
+			webDriverHelper.stop();
+		}
 	}
-}
-		public WebDriverHelper getWebDriverHelper() {
-			if (webDriverHelper == null) {
+	
+	public WebDriverHelper getWebDriverHelper() {
+		if (webDriverHelper == null) {
 				webDriverHelper = new WebDriverHelper(this);
-			}	
-			return webDriverHelper;
-			}
+		}	
+					return webDriverHelper;
+	}
 
-		public GroupHelper getGroupHelper() {
-			if (groupHelper == null) {
+	public GroupHelper getGroupHelper() {
+		if (groupHelper == null) {
 				groupHelper = new GroupHelper(this);
-			}
-			return groupHelper;
-			}
+		}
+					return groupHelper;
+	}
 
-		public ContactHelper getContacthelper() {
-			if (contactHelper == null) {
+	public ContactHelper getContactHelper() {
+		if (contactHelper == null) {
 				contactHelper = new ContactHelper(this);
-			}	
-			return contactHelper;
-			}
+		}	
+					return contactHelper;
+	}
 
-		public NavigationHelper getNavigationHelper() {
-			if (navigationHelper == null) {
+	
+	public NavigationHelper getNavigationHelper() {
+		if (navigationHelper == null) {
 				navigationHelper = new NavigationHelper(this);
-			}		
-			return navigationHelper;
-			}
+		}		
+					return navigationHelper;
+	}
 				
 
-		public HelperWithWebDriverBase getSelectHelper() {
-			if (selectHelper == null) {
+	public HelperWithWebDriverBase getSelectHelper() {
+		if (selectHelper == null) {
 				selectHelper = new SelectHelper(this);
-			}		
-			return selectHelper;
-			}
+		}		
+					return selectHelper;
+	}
 		
 		
-		}
+}
 				

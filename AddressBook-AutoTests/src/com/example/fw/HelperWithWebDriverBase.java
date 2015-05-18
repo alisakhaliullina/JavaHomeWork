@@ -6,7 +6,6 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
-
 import com.example.tests.SelectDateObject;
 import com.example.tests.SelectGroupObject;
 import com.example.tests.SelectMonthObject;
@@ -14,7 +13,7 @@ import com.example.tests.SelectMonthObject;
 public class HelperWithWebDriverBase {
 
 	protected ApplicationManager manager;
-	private WebDriver driver;
+	protected WebDriver driver;
 
 	public HelperWithWebDriverBase (ApplicationManager manager) {
 		this.manager = manager;
@@ -66,10 +65,10 @@ public class HelperWithWebDriverBase {
 		findElement(locator).click();
 	}
 	protected void selectMonth(SelectMonthObject selectMonthObject) {
-			new Select(findElement(By.name("bmonth"))).selectByVisibleText(selectMonthObject.month);
+		new Select(findElement(By.name("bmonth"))).selectByVisibleText(selectMonthObject.month);
 	}
 	protected void selectDate(SelectDateObject selectDateObject) {
-			new Select(findElement(By.name("bday"))).selectByVisibleText(selectDateObject.day);
+		new Select(findElement(By.name("bday"))).selectByVisibleText(selectDateObject.day);
 	}
 	protected void selectGroup(SelectGroupObject selectGroupObject) {
 		new Select(findElement(By.name("new_group"))).selectByVisibleText(selectGroupObject.groupname); 

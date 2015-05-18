@@ -1,6 +1,6 @@
 package com.example.tests;
 
-public class ContactInformationObject {
+public class ContactInformationObject implements Comparable<ContactInformationObject> {
 	public String firstname;
 	public String lastname;
 	public String address;
@@ -9,14 +9,15 @@ public class ContactInformationObject {
 	public String work;
 	public String email;
 	public String email2;
-	public String year;
+	public String byear;
 	public String address2;
-	public String phone;
+	public String phone2;
+	
 
 	public ContactInformationObject(String firstname, String lastname,
 			String address, String home, String mobile, String work,
-			String email, String email2, String year, String address2,
-			String phone) {
+			String email, String email2, String byear, String address2,
+			String phone2, String id) {
 		this.firstname = firstname;
 		this.lastname = lastname;
 		this.address = address;
@@ -25,8 +26,96 @@ public class ContactInformationObject {
 		this.work = work;
 		this.email = email;
 		this.email2 = email2;
-		this.year = year;
+		this.byear = byear;
 		this.address2 = address2;
-		this.phone = phone;
+		this.phone2 = phone2;
+		
 	}
+
+	public ContactInformationObject() {
+		
+	}
+
+	public ContactInformationObject setFirstname(String firstname) {
+		this.firstname = firstname;
+			return this;
+	}
+	public ContactInformationObject setLastname(String lastname) {
+		this.lastname = lastname;
+			return this;
+	}
+	public ContactInformationObject setAddress(String address) {
+		this.address = address;
+			return this;
+	}
+	public ContactInformationObject setHome(String home) {
+		this.home = home;
+			return this;
+	}
+	public ContactInformationObject setMobile(String mobile) {
+		this.mobile = mobile;
+			return this;
+	}
+	
+	public ContactInformationObject setWork(String work) {
+		this.work = work;
+			return this;
+	}
+	public ContactInformationObject setEmail(String email) {
+		this.email = email;
+			return this;
+	}
+	public ContactInformationObject setEmail2(String email2) {
+		this.email2 = email2;
+			return this;
+	}
+	public ContactInformationObject setAddress2(String address2) {
+		this.address2 = address2;
+			return this;
+	}
+	public ContactInformationObject setPhone2(String phone2) {
+		this.phone2 = phone2;
+			return this;
+	}
+	public ContactInformationObject setByear(String byear) {
+		this.byear = byear;
+			return this;
+		
+	}
+		
+	@Override
+	    public String toString() {
+	          return "ContactInformationObject {" + "name='" + firstname + '\'' + '}';
+	      }
+	
+	@Override
+		public int hashCode() {
+			final int prime = 31;
+				int result = 1;
+		return result;
+		}
+
+	@Override
+		public boolean equals(Object obj) {
+			if (this == obj)
+				return true;
+			if (obj == null)
+				return false;
+			if (getClass() != obj.getClass())
+				return false;
+		ContactInformationObject other = (ContactInformationObject) obj;
+			if (firstname == null) {
+				if (other.firstname != null)
+					return false;
+			} 
+			else if (!firstname.equals(other.firstname))
+				return false;
+			return true;
+		}
+
+	public int compareTo(ContactInformationObject other) {
+		return this.firstname.toLowerCase().compareTo(other.firstname.toLowerCase());
+		
+	}
+
 }

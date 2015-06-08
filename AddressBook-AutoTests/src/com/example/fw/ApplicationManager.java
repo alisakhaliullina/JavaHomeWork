@@ -2,7 +2,6 @@ package com.example.fw;
 
 public class ApplicationManager {
 	
-	
 	private static ApplicationManager singletone;
 
 	private WebDriverHelper webDriverHelper;
@@ -47,7 +46,7 @@ public class ApplicationManager {
 	}
 
 	
-	public NavigationHelper getNavigationHelper() {
+	public NavigationHelper navigateTo() {
 		if (navigationHelper == null) {
 				navigationHelper = new NavigationHelper(this);
 		}		
@@ -62,6 +61,4 @@ public class ApplicationManager {
 					return selectHelper;
 	}
 		
-		
 }
-				

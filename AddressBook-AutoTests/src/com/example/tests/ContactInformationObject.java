@@ -1,17 +1,17 @@
 package com.example.tests;
 
 public class ContactInformationObject implements Comparable<ContactInformationObject> {
-	public String firstname;
-	public String lastname;
-	public String address;
-	public String home;
-	public String mobile;
-	public String work;
-	public String email;
-	public String email2;
-	public String byear;
-	public String address2;
-	public String phone2;
+	private String firstname;
+	private String lastname;
+	private String address;
+	private String home;
+	private String mobile;
+	private String work;
+	private String email;
+	private String email2;
+	private String byear;
+	private String address2;
+	private String phone2;
 	
 
 	public ContactInformationObject(String firstname, String lastname,
@@ -116,6 +116,50 @@ public class ContactInformationObject implements Comparable<ContactInformationOb
 	public int compareTo(ContactInformationObject other) {
 		return this.firstname.toLowerCase().compareTo(other.firstname.toLowerCase());
 		
+	}
+
+	public String getFirstname() {
+		return firstname;
+	}
+
+	public String getLastname() {
+		return lastname;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public String getHome() {
+		return home;
+	}
+
+	public String getMobile() {
+		return mobile;
+	}
+
+	public String getWork() {
+		return work;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public String getEmail2() {
+		return email2;
+	}
+
+	public String getByear() {
+		return byear;
+	}
+
+	public String getAddress2() {
+		return address2;
+	}
+
+	public String getPhone2() {
+		return phone2;
 	}
 
 }

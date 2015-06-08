@@ -24,12 +24,9 @@ public class WebDriverHelper {
 	    	if (!"".equals(verificationErrorString)) {
 	    		fail(verificationErrorString);
 	    	}
-		
 	}
 
 	public WebDriver getDriver() {
 				return driver;
 	}
-	
-
 }

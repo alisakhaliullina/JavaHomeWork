@@ -1,10 +1,12 @@
 package com.example.tests;
 
 public class GroupObject implements Comparable<GroupObject> {
-	public String name;
-	public String header;
-	public String footer;
+	
 
+	private String name;
+	private String header;
+	private String footer;
+	
 	public GroupObject(String name, String header, String footer) {
 		this.name = name;
 		this.header = header;
@@ -61,6 +63,18 @@ public class GroupObject implements Comparable<GroupObject> {
 		public GroupObject setFooter(String footer) {
 				this.footer = footer;
 			return this;
+		}
+
+		public String getName() {
+			return name;
+		}
+
+		public String getHeader() {
+			return header;
+		}
+
+		public String getFooter() {
+			return footer;
 		}
 	
 }

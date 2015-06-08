@@ -1,32 +1,25 @@
 package com.example.tests;
 
-import static org.testng.Assert.assertEquals;
-
-import java.util.Collections;
-import java.util.List;
-
+import static org.hamcrest.Matchers.equalTo;
+import static org.junit.Assert.assertThat;
 import org.testng.annotations.Test;
+import com.example.utils.SortedListOf;
 
 
 public class ContactRemovalTests extends TestBase {
   
 	
-@Test
-  	public void testContactCanBeRemoved() throws Exception {
+	@Test
+  		public void testContactCanBeRemoved() throws Exception {
 		
-		app.getNavigationHelper().openStartPage();
-	
-		List<ContactInformationObject> oldList = app.getContactHelper().getContacts();
+			SortedListOf<ContactInformationObject> oldList = app.getContactHelper().getContacts();
 		
 		app.getContactHelper().deleteContact(0); 
 	
-		List<ContactInformationObject> newList = app.getContactHelper().getContacts();
+			SortedListOf<ContactInformationObject> newList = app.getContactHelper().getContacts();
 		  
-		 
-	oldList.remove(0);
-	Collections.sort(oldList);
-	Collections.sort(newList);
-		assertEquals(newList, oldList);
+		assertThat(newList, equalTo(oldList.without(0)));
+
 	}
 }
 

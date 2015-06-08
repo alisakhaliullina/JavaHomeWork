@@ -1,28 +1,23 @@
 package com.example.tests;
 
-import static org.testng.Assert.assertEquals;
-
-import java.util.Collections;
-import java.util.List;
 import org.testng.annotations.Test;
+import static org.junit.Assert.assertThat;
+import static org.hamcrest.Matchers.*;
+import com.example.utils.SortedListOf;
+
 public class GroupRemovalTests extends TestBase {
   
+
+	@Test
+  		public void testFirstGroupCanBeRemoved() throws Exception {
 	
-@Test
-  	public void testFirstGroupCanBeRemoved() throws Exception {
-	
-	app.getNavigationHelper().openGroupTab();
-	
-	List<GroupObject> oldList = app.getGroupHelper().getGroups();
+			SortedListOf<GroupObject> oldList = app.getGroupHelper().getGroups();
 	 
-	app.getGroupHelper().deleteGroup(0); 
+		app.getGroupHelper().deleteGroup(0); 
 	
-	List<GroupObject> newList = app.getGroupHelper().getGroups();
+			SortedListOf<GroupObject> newList = app.getGroupHelper().getGroups();
 
-
-	oldList.remove(0);
-		Collections.sort(oldList);
-	assertEquals(newList, oldList);
+		assertThat(newList, equalTo(oldList.without(0)));
 	}
 }
 

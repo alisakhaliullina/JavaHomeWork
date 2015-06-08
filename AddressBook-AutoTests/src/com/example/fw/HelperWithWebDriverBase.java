@@ -32,7 +32,6 @@ public class HelperWithWebDriverBase {
         element.sendKeys(text);
     }
 
-
 	protected boolean isElementPresent(By by) {
 	    try {
 	      driver.findElement(by);
@@ -64,15 +63,18 @@ public class HelperWithWebDriverBase {
 	protected void click(By locator) {
 		findElement(locator).click();
 	}
-	protected void selectMonth(SelectMonthObject selectMonthObject) {
+		
+	public HelperWithWebDriverBase selectMonth(SelectMonthObject selectMonthObject) {
 		new Select(findElement(By.name("bmonth"))).selectByVisibleText(selectMonthObject.month);
-	}
-	protected void selectDate(SelectDateObject selectDateObject) {
-		new Select(findElement(By.name("bday"))).selectByVisibleText(selectDateObject.day);
-	}
-	protected void selectGroup(SelectGroupObject selectGroupObject) {
-		new Select(findElement(By.name("new_group"))).selectByVisibleText(selectGroupObject.groupname); 
+		return this;
 	}
 
-	
+	public HelperWithWebDriverBase selectDate(SelectDateObject selectDateObject) {
+		new Select(findElement(By.name("bday"))).selectByVisibleText(selectDateObject.day);
+		return this;
+		}
+	public HelperWithWebDriverBase selectGroup(SelectGroupObject selectGroupObject) {
+		new Select(findElement(By.name("new_group"))).selectByVisibleText(selectGroupObject.groupname); 
+		return this;
+		}
 }

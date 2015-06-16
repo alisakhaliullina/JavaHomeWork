@@ -32,8 +32,9 @@ static ApplicationManager app;
 //////////////////////////////////////////////////////////////////////////////////
 		Properties properties = new Properties();
 		properties.load(new FileReader(new File("application.properties")));
+		
 	/////////////////////////////////////////////////////////////////////////////	
-			app = ApplicationManager.getInstance();
+			app = ApplicationManager.getInstance(properties);
 		}
 	
 //	@DataProvider(name = "randomGroups")
@@ -63,8 +64,8 @@ static ApplicationManager app;
 	}
 
 	@AfterTest
-		public void tearDown() throws Exception {
-			ApplicationManager.getInstance().stop();
+		public void tearDown(Properties properties) throws Exception {
+			ApplicationManager.getInstance(properties).stop();
 		}
 
 //	@DataProvider(name = "randomContacts")

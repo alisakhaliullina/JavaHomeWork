@@ -1,5 +1,7 @@
 package com.example.fw;
 
+import java.util.Properties;
+
 public class ApplicationManager {
 	
 	private static ApplicationManager singletone;
@@ -11,7 +13,7 @@ public class ApplicationManager {
 	private NavigationHelper navigationHelper;
 	private HelperWithWebDriverBase selectHelper;
 		
-	public static ApplicationManager getInstance() {
+	public static ApplicationManager getInstance(Properties properties) {
 		if (singletone == null) {
 			singletone = new ApplicationManager();
 		}

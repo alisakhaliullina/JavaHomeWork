@@ -16,7 +16,7 @@ public class WebDriverHelper {
 	private ApplicationManager manager;
 	private Properties properties;
 	
-	public WebDriverHelper( ApplicationManager manager, Properties properties) {
+	public WebDriverHelper( ApplicationManager manager) {
 	this.manager = manager;
 		
 			///////////////////////////////////////////

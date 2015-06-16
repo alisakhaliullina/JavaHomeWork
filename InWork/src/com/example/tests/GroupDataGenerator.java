@@ -1,5 +1,6 @@
 package com.example.tests;
 
+//import java.io.*;
 import java.io.BufferedReader;
 import java.io.File;
 //import java.io.FileNotFoundException;
@@ -11,6 +12,7 @@ import java.util.List;
 import java.util.Random;
 
 import com.example.tests.GroupObject;
+import com.thoughtworks.xstream.XStream;
 
 public class GroupDataGenerator {
 
@@ -41,16 +43,27 @@ if ("csv".equals(format)) {
 		}
 	}
 
-	private static void saveGroupsToXmlFile(List<GroupObject> groups, File file) {
+	private static void saveGroupsToXmlFile(List<GroupObject> groups, File file) throws IOException {
 		// TODO Auto-generated method stub
-		
+		XStream xstream = new XStream();
+		xstream.alias("group", GroupObject.class);
+		String xml = xstream.toXML(groups);
+		FileWriter writer = new FileWriter(file);
+		writer.write(xml);
+		writer.close();
 	}
 
+	public static  List<GroupObject> loadGroupsFromXmlFile(File file) {
+		XStream xstream = new XStream();
+		xstream.alias("group", GroupObject.class);
+		return (List<GroupObject>) xstream.fromXML(file);
+	}
+	
 	private static void saveGroupsToCsvFile(List<GroupObject> groups, File file) throws IOException {
 		
 			FileWriter writer = new FileWriter(file);
 			for (GroupObject group : groups) {
-				writer.write(group.getName() + "," + group.getHeader() + "," + group.getFooter() + "," + "\n");
+				writer.write(group.getName() + "," + group.getHeader() + "," + group.getFooter() + ",!" + "\n");
 			}
 			writer.close();
 		}

@@ -1,0 +1,19 @@
+	create CSV files for groups & contacts
+
+D:\Java_course\JavaHomeWork\AddressBook-AutoTests > java -cp bin com.example.tests.GroupDataGenerator 3 groups.txt csv
+D:\Java_course\JavaHomeWork\AddressBook-AutoTests > del groups.txt
+D:\Java_course\JavaHomeWork\AddressBook-AutoTests > java -cp bin com.example.tests.GroupDataGenerator 3 groups.txt csv
+D:\Java_course\JavaHomeWork\AddressBook-AutoTests > java -cp bin com.example.tests.ContactDataGenerator 3 contacts.txt csv
+D:\Java_course\JavaHomeWork\AddressBook-AutoTests > del contacts.txt
+D:\Java_course\JavaHomeWork\AddressBook-AutoTests > java -cp bin com.example.tests.ContactDataGenerator 3 contacts.txt csv
+
+	create XML files for groups & contacts
+
+D:\Java_course\JavaHomeWork\AddressBook-AutoTests > del groups.xml
+D:\Java_course\JavaHomeWork\AddressBook-AutoTests > java -cp bin; E:\xstream-1.4.8\lib\xstream-1.4.8.jar; E:\xstream-1.4.8\lib\xstream\xpp3_min-1.1.4c.jar; E:\xstream-1.4.8\lib\xstream\xmlpull-1.1.3.1.jar com.example.tests.GroupDataGenerator 3 groups.xml xml
+D:\Java_course\JavaHomeWork\AddressBook-AutoTests > del contacts.xml
+D:\Java_course\JavaHomeWork\AddressBook-AutoTests > java -cp bin; E:\xstream-1.4.8\lib\xstream-1.4.8.jar; E:\xstream-1.4.8\lib\xstream\xpp3_min-1.1.4c.jar; E:\xstream-1.4.8\lib\xstream\xmlpull-1.1.3.1.jar com.example.tests.ContactDataGenerator 3 contacts.xml xml
+	
+	run auto tests
+
+D:\Java_course\JavaHomeWork\AddressBook-AutoTests > java -cp bin; E:\xstream-1.4.8\lib\xstream-1.4.8.jar; E:\xstream-1.4.8\lib\xstream\xpp3_min-1.1.4c.jar; E:\xstream-1.4.8\lib\xstream\xmlpull-1.1.3.1.jar; E:\selenium-server-standalone-2.46.0.jar org.testng.TestNG testng-customsuite.xml

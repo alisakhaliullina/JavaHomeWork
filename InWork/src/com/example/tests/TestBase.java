@@ -1,12 +1,18 @@
 package com.example.tests;
 
+import java.io.File;
+import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 //import java.util.Random;
 
+
+import java.util.Properties;
+
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
 
 import com.example.fw.ApplicationManager;
@@ -21,8 +27,12 @@ static ApplicationManager app;
 //Random rnd = new Random();
 	
 
-	@BeforeClass
+	@BeforeTest
 		public void setUp() throws Exception {
+//////////////////////////////////////////////////////////////////////////////////
+		Properties properties = new Properties();
+		properties.load(new FileReader(new File("application.properties")));
+	/////////////////////////////////////////////////////////////////////////////	
 			app = ApplicationManager.getInstance();
 		}
 	

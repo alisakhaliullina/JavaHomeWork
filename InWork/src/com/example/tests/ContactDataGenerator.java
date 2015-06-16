@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Random;
 
 import com.example.tests.ContactInformationObject;
+import com.thoughtworks.xstream.XStream;
 
 public class ContactDataGenerator {
 
@@ -40,22 +41,52 @@ public class ContactDataGenerator {
 			}
 		
 	}
-	private static void saveContactsToXmlFile(List<ContactInformationObject> contacts, File file) {
+	private static void saveContactsToXmlFile(List<ContactInformationObject> contacts, File file) throws IOException {
 		// TODO Auto-generated method stub
-		
+		XStream xstream = new XStream();
+		xstream.alias("contact", ContactInformationObject.class);
+		String xml = xstream.toXML(contacts);
+		FileWriter writer = new FileWriter(file);
+		writer.write(xml);
+		writer.close();
 	}
 	
+	public static  List<ContactInformationObject> loadGroupsFromXmlFile(File file) {
+		XStream xstream = new XStream();
+		xstream.alias("contact", ContactInformationObject.class);
+		return (List<ContactInformationObject>) xstream.fromXML(file);
+	}
 	
 	
 	private static void saveContactsToCsvFile(List<ContactInformationObject> contacts, File file) throws IOException {
 		FileWriter writer = new FileWriter(file);
 		for (ContactInformationObject contact : contacts) {
-			writer.write(contact.getFirstname() + "," + contact.getLastname() + "," + "\n");
+			writer.write(contact.getFirstname() + "," + contact.getLastname() + ",!" + "\n");
 		}
 		writer.close();
 	}
 	
 	//
+public static List<ContactInformationObject> loadContactsFromCsvFile(File file)  throws IOException {
+		
+		List<ContactInformationObject> list = new ArrayList<ContactInformationObject>();
+		FileReader reader = new FileReader(file);
+		BufferedReader bufferedReader = new BufferedReader(reader);
+		String line = bufferedReader.readLine();
+		while (line != null) {
+			String[] part = line.split(",");
+			ContactInformationObject contact = new ContactInformationObject()
+			.setFirstname(part[0])
+			.setLastname(part[1]);
+			
+			list.add(contact);
+			line = bufferedReader.readLine();
+			
+		}
+				bufferedReader.close();
+		return list;
+	
+	}
 	
 	public static List<ContactInformationObject> generateRandomContacts(int amount) {
 	List<ContactInformationObject> list = new ArrayList<ContactInformationObject>();

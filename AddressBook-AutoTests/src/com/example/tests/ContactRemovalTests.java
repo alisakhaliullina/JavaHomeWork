@@ -5,7 +5,6 @@ import static org.junit.Assert.assertThat;
 import org.testng.annotations.Test;
 import com.example.utils.SortedListOf;
 
-
 public class ContactRemovalTests extends TestBase {
   
 	

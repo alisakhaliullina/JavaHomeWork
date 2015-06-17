@@ -1,38 +1,34 @@
 package com.example.tests;
 
+import java.io.File;
+import java.io.FileReader;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Random;
+import java.util.Properties;
 import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.DataProvider;
-
+import org.testng.annotations.BeforeTest;
 import com.example.fw.ApplicationManager;
 
 public class TestBase {
 
-static ApplicationManager app;
-Random rnd = new Random();
-	
+	static ApplicationManager app;
 
-	@BeforeClass
+	@BeforeTest
 		public void setUp() throws Exception {
-			app = ApplicationManager.getInstance();
+		Properties properties = new Properties();
+		properties.load(new FileReader(new File("application.properties")));
+		
+			app = ApplicationManager.getInstance(properties);
 		}
 	
-	@DataProvider(name = "randomGroups")
-	public Iterator<Object[]> generateRandomGroups() {
+	public static List<Object[]> wrapGroupsForDataProvider(List<GroupObject> groups) {
 		List<Object[]> list = new ArrayList<Object[]>();
-		for (int i = 0; i < 2; i++) {
-			GroupObject group = new GroupObject()
-			.setName("name"+rnd.nextInt())
-			.setHeader("header"+rnd.nextInt())
-			.setFooter("footer"+rnd.nextInt());	
-		list.add(new Object[]{group});
-		} 
-	
-		return list.iterator();
+		for (GroupObject group : groups) {
+			
+		
+			list.add(new Object[]{group});
+		}
+		return list;
 	}
 
 	@AfterTest
@@ -40,28 +36,11 @@ Random rnd = new Random();
 			ApplicationManager.getInstance().stop();
 		}
 
-	@DataProvider(name = "randomContacts")
-	public Iterator<Object[]> generateRandomContacts() {
+	public static List<Object[]> wrapContactForDataProvider(List<ContactInformationObject> contacts) {
 		List<Object[]> list = new ArrayList<Object[]>();
-		for (int i = 0; i < 1; i++) {
-
-			ContactInformationObject contact = new ContactInformationObject()
-			.setFirstname("firstname"+rnd.nextInt())
-			.setLastname("lastname"+rnd.nextInt())
-			.setAddress("address"+rnd.nextInt())
-			.setHome("home"+rnd.nextInt())
-			.setMobile("mobile"+rnd.nextInt())
-			.setWork("work"+rnd.nextInt())
-			.setEmail("email"+rnd.nextInt())
-			.setEmail2("email2"+rnd.nextInt())
-			.setByear("byear"+rnd.nextInt())
-			.setAddress2("address2"+rnd.nextInt())
-			.setPhone2("phone2"+rnd.nextInt());
-			
+		for (ContactInformationObject contact : contacts) {
 			list.add(new Object[]{contact});
-		} 
-
-		return list.iterator();
-
+		}
+				return list;
 	}
 }

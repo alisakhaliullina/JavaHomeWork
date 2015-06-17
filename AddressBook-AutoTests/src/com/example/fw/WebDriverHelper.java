@@ -1,6 +1,6 @@
 package com.example.fw;
 
-import static org.junit.Assert.fail;
+import org.testng.Assert;
 import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -11,9 +11,10 @@ public class WebDriverHelper {
 	private StringBuffer verificationErrors = new StringBuffer();
 	private ApplicationManager manager;
 	
-	public WebDriverHelper (ApplicationManager manager) {
-		this.manager = manager;
-			driver = new FirefoxDriver();
+	public WebDriverHelper(ApplicationManager manager) {
+	this.manager = manager; 
+	
+driver = new FirefoxDriver();
 			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 			driver.get("http://localhost/addressbookv4.1.4/");
 	}
@@ -22,7 +23,7 @@ public class WebDriverHelper {
 		driver.quit();
 	    String verificationErrorString = verificationErrors.toString();
 	    	if (!"".equals(verificationErrorString)) {
-	    		fail(verificationErrorString);
+	    		Assert.fail(verificationErrorString);
 	    	}
 	}
 

@@ -76,5 +76,4 @@ public class GroupObject implements Comparable<GroupObject> {
 		public String getFooter() {
 			return footer;
 		}
-	
 }

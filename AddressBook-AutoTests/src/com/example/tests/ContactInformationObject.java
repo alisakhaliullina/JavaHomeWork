@@ -115,7 +115,6 @@ public class ContactInformationObject implements Comparable<ContactInformationOb
 
 	public int compareTo(ContactInformationObject other) {
 		return this.firstname.toLowerCase().compareTo(other.firstname.toLowerCase());
-		
 	}
 
 	public String getFirstname() {

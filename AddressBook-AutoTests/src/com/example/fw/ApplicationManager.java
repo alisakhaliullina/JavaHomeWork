@@ -1,5 +1,13 @@
 package com.example.fw;
 
+
+import org.testng.Assert;
+
+import java.util.Properties;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.ie.InternetExplorerDriver;
+
 public class ApplicationManager {
 	
 	private static ApplicationManager singletone;
@@ -11,19 +19,43 @@ public class ApplicationManager {
 	private NavigationHelper navigationHelper;
 	private HelperWithWebDriverBase selectHelper;
 		
-	public static ApplicationManager getInstance() {
+	protected static WebDriver driver;
+	private static Properties properties;
+
+		
+	public static ApplicationManager getInstance(Properties properties) {
+		
+		
+		ApplicationManager.properties = properties;
+		String browser = properties.getProperty("browser");
+		
+		if ("firefox".equals(browser)) {
+		driver = new FirefoxDriver();
+				} else if ("ie".equals(browser)) {
+		driver = new InternetExplorerDriver();	
+				}
+				else {
+					throw new Error ("Unsupported browser" + browser);
+				}
+		String baseUrl = properties.getProperty("baseUrl");
+		driver.get(baseUrl);
+		
 		if (singletone == null) {
 			singletone = new ApplicationManager();
 		}
 			return singletone;
-	}
+		
+			}
 	
 	public void stop() {
 		if (webDriverHelper != null) {
 			webDriverHelper.stop();
 		}
+		driver.quit();
 	}
 	
+	
+
 	public WebDriverHelper getWebDriverHelper() {
 		if (webDriverHelper == null) {
 				webDriverHelper = new WebDriverHelper(this);
@@ -59,6 +91,10 @@ public class ApplicationManager {
 				selectHelper = new SelectHelper(this);
 		}		
 					return selectHelper;
+	}
+
+	public static ApplicationManager getInstance() {
+		return singletone;
 	}
 		
 }

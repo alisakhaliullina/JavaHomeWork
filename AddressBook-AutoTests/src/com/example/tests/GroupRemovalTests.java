@@ -20,4 +20,3 @@ public class GroupRemovalTests extends TestBase {
 		assertThat(newList, equalTo(oldList.without(0)));
 	}
 }
-

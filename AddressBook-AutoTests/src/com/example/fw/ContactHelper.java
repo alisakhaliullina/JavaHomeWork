@@ -60,7 +60,6 @@ public class ContactHelper extends HelperWithWebDriverBase {
 				fillContactInformation(contactInformationObject);
 					click(By.xpath("(//input[@name='update'])[1]"));
 						goBackToContactsPage();
-						rebuildCache();
 						cachedContacts = null;
 		return this;
 	}

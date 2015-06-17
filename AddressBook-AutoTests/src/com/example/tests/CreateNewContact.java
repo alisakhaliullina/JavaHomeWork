@@ -2,15 +2,26 @@ package com.example.tests;
 
 import static org.junit.Assert.assertThat;
 import static org.hamcrest.Matchers.*;
+import java.io.File;
+import java.io.IOException;
+import java.util.Iterator;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import com.example.utils.SortedListOf;
 import static com.example.fw.ContactHelper.CREATION;
+import static com.example.tests.ContactDataGenerator.loadContactsFromCsvFile;
 
-public class CreateNewContact extends TestBase {
+@Test (dataProvider = "contactsFromFile")
+	public class CreateNewContact extends TestBase {
 
+	
+@DataProvider 
+	public Iterator<Object[]> contactsFromFile()  throws IOException {
 
-	@Test (dataProvider = "randomContacts")
-		public void createValidContact(ContactInformationObject validContact) throws Exception {
+		return wrapContactForDataProvider(loadContactsFromCsvFile(new File("contacts.txt"))).iterator();
+	}
+
+	public void createValidContact(ContactInformationObject validContact) throws Exception {
 	
 			SortedListOf<ContactInformationObject> oldList = app.getContactHelper().getContacts();
 	
@@ -22,11 +33,10 @@ public class CreateNewContact extends TestBase {
 			SortedListOf<ContactInformationObject> newList = app.getContactHelper().getContacts();
 	  
 		assertThat(newList, equalTo(oldList.withAdded(validContact)));
-
-}
-  
-	@Test
-		public void createEmptyContact() throws Exception {
+	}
+	
+  @Test
+	public void createEmptyContact() throws Exception {
 		
 			SortedListOf<ContactInformationObject> oldList = app.getContactHelper().getContacts();
 		
